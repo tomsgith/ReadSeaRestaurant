@@ -10,7 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-
+import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
  
 @Entity(name = "CREDENTIALS")
@@ -23,6 +24,10 @@ public class UserCredentials {
 	String password;
 	String verifyPassword;
 	Boolean enabled;
+
+	@OneToOne(mappedBy="userCredentials", cascade = CascadeType.PERSIST) 
+ 	private Member member;
+	
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="credentials_id") 
@@ -58,5 +63,12 @@ public class UserCredentials {
 	public void setAuthority(List<Authority> authority) {
 		this.authority = authority;
 	}
+	public Member getMember() {
+		return member;
+	}
+	public void setMember(Member member) {
+		this.member = member;
+	}
+ 
  	
 }
