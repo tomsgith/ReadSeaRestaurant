@@ -16,7 +16,7 @@
   
    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
       <property name="dataSource" ref="dataSource" />
-      <property name="packagesToScan" value="edu.mum.domain" />
+      <property name="packagesToScan" value="com.ea.redsea.domain" />
       <property name="jpaVendorAdapter">
          <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
       </property>
@@ -45,7 +45,7 @@
    </bean>
    
    <!-- Scan for  transaction-based resources -->
-   	<context:component-scan base-package="edu.mum.service,edu.mum.dao" />
+   	<context:component-scan base-package="com.ea.redsea.service,com.ea.redsea.dao" />
   
     <tx:annotation-driven transaction-manager="transactionManager"/>
  
